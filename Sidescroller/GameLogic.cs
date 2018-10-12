@@ -110,7 +110,7 @@ namespace Sidescroller
                 else if (asset.Tag == "coin")
                 {
                     asset.Left -= obstacleSpeed;
-                    if (asset.Left + x.Width < -60)
+                    if (asset.Left + asset.Width < -60)
                     {
                         asset.Left = view.ClientSize.Width + rnd.Next(minSpawnDistance, maxSpawnDistance);
                         asset.Top = view.ClientSize.Height - rnd.Next(100, 400);
