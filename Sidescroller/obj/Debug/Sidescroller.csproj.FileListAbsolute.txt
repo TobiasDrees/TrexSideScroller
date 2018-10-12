@@ -1,0 +1,30 @@
+H:\C#\c# Projekt\Sidescroller\Sidescroller\obj\Debug\Sidescroller.Form1.resources
+H:\C#\c# Projekt\Sidescroller\Sidescroller\obj\Debug\Sidescroller.LoginMask.resources
+H:\C#\c# Projekt\Sidescroller\Sidescroller\obj\Debug\Sidescroller.Properties.Resources.resources
+H:\C#\c# Projekt\Sidescroller\Sidescroller\obj\Debug\Sidescroller.csproj.GenerateResource.Cache
+H:\C#\c# Projekt\Sidescroller\Sidescroller\bin\Debug\Sidescroller.exe.config
+H:\C#\c# Projekt\Sidescroller\Sidescroller\bin\Debug\Sidescroller.exe
+H:\C#\c# Projekt\Sidescroller\Sidescroller\bin\Debug\Sidescroller.pdb
+H:\C#\c# Projekt\Sidescroller\Sidescroller\obj\Debug\Sidescroller.exe
+H:\C#\c# Projekt\Sidescroller\Sidescroller\obj\Debug\Sidescroller.pdb
+H:\C#\c# Projekt\Sidescroller\Sidescroller\obj\Debug\Sidescroller.csprojResolveAssemblyReference.cache
+H:\Sidescroller\Sidescroller\Sidescroller\bin\Debug\Sidescroller.exe.config
+H:\Sidescroller\Sidescroller\Sidescroller\obj\Debug\Sidescroller.exe
+H:\Sidescroller\Sidescroller\Sidescroller\obj\Debug\Sidescroller.pdb
+H:\Sidescroller\Sidescroller\Sidescroller\bin\Debug\Sidescroller.exe
+H:\Sidescroller\Sidescroller\Sidescroller\bin\Debug\Sidescroller.pdb
+H:\Sidescroller\Sidescroller\Sidescroller\obj\Debug\Sidescroller.csprojResolveAssemblyReference.cache
+H:\Sidescroller\Sidescroller\Sidescroller\obj\Debug\Sidescroller.Form1.resources
+H:\Sidescroller\Sidescroller\Sidescroller\obj\Debug\Sidescroller.LoginMask.resources
+H:\Sidescroller\Sidescroller\Sidescroller\obj\Debug\Sidescroller.Properties.Resources.resources
+H:\Sidescroller\Sidescroller\Sidescroller\obj\Debug\Sidescroller.csproj.GenerateResource.Cache
+H:\Jahr 3\Sidescroller\Sidescroller\Sidescroller\bin\Debug\Sidescroller.exe.config
+H:\Jahr 3\Sidescroller\Sidescroller\Sidescroller\obj\Debug\Sidescroller.exe
+H:\Jahr 3\Sidescroller\Sidescroller\Sidescroller\obj\Debug\Sidescroller.pdb
+H:\Jahr 3\Sidescroller\Sidescroller\Sidescroller\bin\Debug\Sidescroller.exe
+H:\Jahr 3\Sidescroller\Sidescroller\Sidescroller\bin\Debug\Sidescroller.pdb
+H:\Jahr 3\Sidescroller\Sidescroller\Sidescroller\obj\Debug\Sidescroller.csprojResolveAssemblyReference.cache
+H:\Jahr 3\Sidescroller\Sidescroller\Sidescroller\obj\Debug\Sidescroller.Form1.resources
+H:\Jahr 3\Sidescroller\Sidescroller\Sidescroller\obj\Debug\Sidescroller.LoginMask.resources
+H:\Jahr 3\Sidescroller\Sidescroller\Sidescroller\obj\Debug\Sidescroller.Properties.Resources.resources
+H:\Jahr 3\Sidescroller\Sidescroller\Sidescroller\obj\Debug\Sidescroller.csproj.GenerateResource.Cache
