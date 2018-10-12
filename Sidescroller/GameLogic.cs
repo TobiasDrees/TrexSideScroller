@@ -109,19 +109,19 @@ namespace Sidescroller
                 }
                 else if (asset.Tag == "coin")
                 {
-                    x.Left -= obstacleSpeed;
-                    if (x.Left + x.Width < -60)
+                    asset.Left -= obstacleSpeed;
+                    if (asset.Left + x.Width < -60)
                     {
-                        x.Left = this.ClientSize.Width + rnd.Next(minSpawnDistance, maxSpawnDistance);
-                        x.Top = this.ClientSize.Height - rnd.Next(100, 400);
+                        asset.Left = view.ClientSize.Width + rnd.Next(minSpawnDistance, maxSpawnDistance);
+                        asset.Top = view.ClientSize.Height - rnd.Next(100, 400);
                     }
 
                     if (trex.Bounds.IntersectsWith(x.Bounds))
                     {
                         money += 1;
                         baseScore += 25;
-                        x.Left = this.ClientSize.Width + rnd.Next(minSpawnDistance, maxSpawnDistance);
-                        x.Top = this.ClientSize.Height - rnd.Next(100, 400);
+                        asset.Left = view.ClientSize.Width + rnd.Next(minSpawnDistance, maxSpawnDistance);
+                        asset.Top = view.ClientSize.Height - rnd.Next(100, 400);
                     }
                 }
             }
