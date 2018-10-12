@@ -116,7 +116,7 @@ namespace Sidescroller
                         asset.Top = view.ClientSize.Height - rnd.Next(100, 400);
                     }
 
-                    if (trex.Bounds.IntersectsWith(x.Bounds))
+                    if (trex.Bounds.IntersectsWith(asset.Bounds))
                     {
                         money += 1;
                         baseScore += 25;
