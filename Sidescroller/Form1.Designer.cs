@@ -34,7 +34,6 @@
             this.livesText = new System.Windows.Forms.Label();
             this.moneyText = new System.Windows.Forms.Label();
             this.highscoreText = new System.Windows.Forms.Label();
-            this.loginMask1 = new Sidescroller.LoginMask();
             this.coin = new System.Windows.Forms.PictureBox();
             this.obstacle4 = new System.Windows.Forms.PictureBox();
             this.obstacle3 = new System.Windows.Forms.PictureBox();
@@ -42,6 +41,7 @@
             this.trex = new System.Windows.Forms.PictureBox();
             this.floor = new System.Windows.Forms.PictureBox();
             this.obstacle2 = new System.Windows.Forms.PictureBox();
+            this.loginMask = new Sidescroller.LoginMask();
             ((System.ComponentModel.ISupportInitialize)(this.coin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.obstacle4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.obstacle3)).BeginInit();
@@ -64,7 +64,7 @@
             // gameTimer
             // 
             this.gameTimer.Interval = 20;
-            this.gameTimer.Tick += new System.EventHandler(this.gameEvent);
+            
             // 
             // livesText
             // 
@@ -96,15 +96,6 @@
             this.highscoreText.TabIndex = 10;
             this.highscoreText.Text = "Highscore: 0";
             // 
-            // loginMask1
-            // 
-            this.loginMask1.BackColor = System.Drawing.Color.Transparent;
-            this.loginMask1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.loginMask1.Location = new System.Drawing.Point(210, 164);
-            this.loginMask1.Name = "loginMask1";
-            this.loginMask1.Size = new System.Drawing.Size(208, 118);
-            this.loginMask1.TabIndex = 5;
-            // 
             // coin
             // 
             this.coin.Image = global::Sidescroller.Properties.Resources.coin;
@@ -134,6 +125,7 @@
             this.obstacle3.TabIndex = 6;
             this.obstacle3.TabStop = false;
             this.obstacle3.Tag = "obstacle";
+            
             // 
             // obstacle1
             // 
@@ -145,6 +137,7 @@
             this.obstacle1.TabIndex = 3;
             this.obstacle1.TabStop = false;
             this.obstacle1.Tag = "obstacle";
+            
             // 
             // trex
             // 
@@ -156,6 +149,7 @@
             this.trex.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.trex.TabIndex = 2;
             this.trex.TabStop = false;
+            
             // 
             // floor
             // 
@@ -176,6 +170,17 @@
             this.obstacle2.TabIndex = 0;
             this.obstacle2.TabStop = false;
             this.obstacle2.Tag = "obstacle";
+            
+            // 
+            // loginMask
+            // 
+            this.loginMask.BackColor = System.Drawing.Color.Transparent;
+            this.loginMask.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.loginMask.Location = new System.Drawing.Point(195, 155);
+            this.loginMask.Name = "loginMask";
+            this.loginMask.Size = new System.Drawing.Size(237, 118);
+            this.loginMask.TabIndex = 12;
+            this.loginMask.onLogin += new System.EventHandler(onLogin);
             // 
             // Form1
             // 
@@ -183,13 +188,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(618, 476);
+            this.Controls.Add(this.loginMask);
             this.Controls.Add(this.coin);
             this.Controls.Add(this.highscoreText);
             this.Controls.Add(this.moneyText);
             this.Controls.Add(this.livesText);
             this.Controls.Add(this.obstacle4);
             this.Controls.Add(this.obstacle3);
-            this.Controls.Add(this.loginMask1);
             this.Controls.Add(this.scoreText);
             this.Controls.Add(this.obstacle1);
             this.Controls.Add(this.trex);
@@ -221,13 +226,13 @@
         private System.Windows.Forms.PictureBox obstacle1;
         private System.Windows.Forms.Label scoreText;
         private System.Windows.Forms.Timer gameTimer;
-        private LoginMask loginMask1;
         private System.Windows.Forms.PictureBox obstacle3;
         private System.Windows.Forms.PictureBox obstacle4;
         private System.Windows.Forms.Label livesText;
         private System.Windows.Forms.Label moneyText;
         private System.Windows.Forms.Label highscoreText;
         private System.Windows.Forms.PictureBox coin;
+        private LoginMask loginMask;
     }
 }
 

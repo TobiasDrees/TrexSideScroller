@@ -13,215 +13,91 @@ namespace Sidescroller
 {
     public partial class Form1 : Form
     {
-        enum GameState
-        {
-            INIT,
-            STARTED,
-            FINISHED
-        }
-
-        private const int baseJumpSpeed = 30;
-        private const int baseObstaclespeed = 10;
-        private const int baseGravity = 3;
-        private const int minSpawnDistance = 0;
-        private const int maxSpawnDistance = 800;
-        private const int baseLives = 3;
-        private const int baseInvincibilityTime = 1000;
-        private const int baseDamageBuildupTime = 40;
-
-        private bool doubleJumpUnlocked = true;
-        private bool jumping = false;
-        private bool doubleJumping = false;
-        private bool spaceLetGo = true;
-        private int jumpSpeed = baseJumpSpeed;
-        private int gravity = baseGravity;
-        private int baseScore = 0;
-        private double finalScore = 0;
-        private int obstacleSpeed = baseObstaclespeed;
-        private int lives = baseLives;
-        private int invincibilityTime = 0;
-        private int damageBuildupTime = baseDamageBuildupTime;
-        private int money = 0;
-        private int highscore = 0;
-        private double scoreMultiplier = 1;
-        private bool intersectingObstacle = false;
-        private Random rnd = new Random();
-
-        private GameState state;
+        private User user;
+        private GameLogic logic;
+        private List<PictureBox> assets = new List<PictureBox>();
 
         public Form1()
         {
-            state = GameState.STARTED;
+            logic = new GameLogic(this);
             InitializeComponent();
+            this.gameTimer.Tick += new System.EventHandler(logic.gameEvent);
+            assignAssets();
         }
 
-        private void gameEvent(object sender, EventArgs e)
+        private void assignAssets()
         {
-            this.Invalidate();
-
-            trex.Top += jumpSpeed;
-            scoreText.Text = "Score: " + Math.Floor(finalScore);
-            livesText.Text = "Lives: " + lives;
-            moneyText.Text = "Money: $" + money;
-
-            if (invincibilityTime > 0)
-            {
-                invincibilityTime -= 20;
-                trex.Visible = !trex.Visible;
-            }
-
-            if (jumping)
-            {
-                jumpSpeed += gravity;
-            }
-
-            intersectingObstacle = false;
-
-            foreach (Control x in this.Controls)
-            {
-                if (x is PictureBox)
-                {
-                    if (x.Tag == "obstacle")
-                    {
-                        x.Left -= obstacleSpeed;
-                        if (x.Left + x.Width < -60)
-                        {
-                            x.Left = this.ClientSize.Width + rnd.Next(minSpawnDistance, maxSpawnDistance);
-                        }
-
-                        if (trex.Bounds.IntersectsWith(x.Bounds) && invincibilityTime <= 0)
-                        {
-                            intersectingObstacle = true;
-
-                            if (damageBuildupTime <= 0)
-                            {
-                                lives -= 1;
-                                damageBuildupTime = baseDamageBuildupTime;
-
-                                if (lives == 0)
-                                {
-                                    die();
-                                }
-                                else
-                                {
-                                    invincibilityTime = baseInvincibilityTime;
-                                }
-                            }
-                        }
-                    }
-                    else if (x.Tag == "coin")
-                    {
-                        x.Left -= obstacleSpeed;
-                        if (x.Left + x.Width < -60)
-                        {
-                            x.Left = this.ClientSize.Width + rnd.Next(minSpawnDistance, maxSpawnDistance);
-                            x.Top = this.ClientSize.Height - rnd.Next(100, 400);
-                        }
-
-                        if (trex.Bounds.IntersectsWith(x.Bounds))
-                        {
-                            money += 1;
-                            baseScore += 25;
-                            x.Left = this.ClientSize.Width + rnd.Next(minSpawnDistance, maxSpawnDistance);
-                            x.Top = this.ClientSize.Height - rnd.Next(100, 400);
-                        }
-                    }
-                }
-            }
-
-            if (intersectingObstacle)
-            {
-                damageBuildupTime -= 20;
-            }
-            else
-            {
-                damageBuildupTime = baseDamageBuildupTime;
-
-            }
-
-            if (trex.Top >= 380)
-            {
-                trex.Top = floor.Top - trex.Height;
-                jumpSpeed = 0;
-                jumping = false;
-                doubleJumping = false;
-            }
-
-            obstacleSpeed = baseObstaclespeed + baseScore / 500;
-            baseScore++;
-            scoreMultiplier = (1 + (double)baseScore / 1000);
-            finalScore = baseScore * scoreMultiplier;
-        }
+            assets.Add(coin);
+            assets.Add(obstacle4);
+            assets.Add(obstacle3);
+            assets.Add(obstacle1);
+            assets.Add(trex);
+            assets.Add(obstacle2);
+        }        
 
         private void keyisdown(object sender, KeyEventArgs e)
         {
-
-            if (e.KeyCode == Keys.Space)
-            {
-                if (!jumping)
-                {
-                    jumping = true;
-                    jumpSpeed = -baseJumpSpeed;
-                    spaceLetGo = false;
-                }
-
-                if (doubleJumpUnlocked && !doubleJumping && spaceLetGo)
-                {
-                    jumpSpeed = -baseJumpSpeed;
-                    doubleJumping = true;
-                }
-            }
+            logic.keyisdown(sender, e);
         }
 
         private void keyisup(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Space)
-            {
-                spaceLetGo = true;
-            }
+            logic.keyisup(sender, e);
+        }       
 
-            if (e.KeyCode == Keys.R && state == GameState.STARTED)
-            {
-                resetGame();
-            }
-        }
-
-        private void die()
+        protected void onLogin(object sender, EventArgs e)
         {
-            gameTimer.Stop();
-            if (highscore < finalScore)
+            if (e is LoginEventArgs)
             {
-                highscore = (int)Math.Floor(finalScore);
+                LoginEventArgs eventArgs = (LoginEventArgs)e;
+                user = eventArgs.User;
+                logic.setState(Sidescroller.GameLogic.GameState.INITIALIZED);
             }
-            trex.Image = Properties.Resources.dead;
-            scoreText.Text += "  Press R to restart";
-            highscoreText.Text = "Highscore: " + highscore;
         }
 
-        private void resetGame()
+        public PictureBox getTrex()
         {
-            gravity = baseGravity;
-            trex.Top = floor.Top - trex.Height;
-            jumpSpeed = baseJumpSpeed;
-            jumping = false;
-            doubleJumping = false;
-            lives = baseLives;
-            baseScore = 0;
-            finalScore = 0;
-            obstacleSpeed = baseObstaclespeed;
-            scoreText.Text = "Score: " + finalScore;
-            trex.Image = Properties.Resources.running;
-
-            foreach (Control x in this.Controls)
-            {
-                if (x is PictureBox && (x.Tag == "obstacle" || x.Tag == "coin"))
-                {
-                    int position = rnd.Next(minSpawnDistance, maxSpawnDistance);
-                    x.Left = this.Width + position + x.Width * 3;
-                }
-            }
-
-            gameTimer.Start();
+            return trex;
         }
+
+        public PictureBox getFloor()
+        {
+            return floor;
+        }
+
+        public void setScore(double score)
+        {
+            this.scoreText.Text = "Score: " + Math.Floor(score);
+        }
+
+        public void setLives(int lives)
+        {
+            this.livesText.Text = "Lives: " + lives;
+        }
+
+        public void setMoney(int money)
+        {
+            this.moneyText.Text = "Money: $" + money;
+        }
+
+        public void setHighscore(int highscore)
+        {
+            this.highscoreText.Text = "Highscore: " + highscore;
+        }
+
+        public List<PictureBox> getAssets()
+        {
+            return assets;
+        }
+
+        public void stopTimer() {
+            this.gameTimer.Stop();
+        }
+
+        public void startTimer()
+        {
+            this.gameTimer.Start();
+        }
+
     }
 }

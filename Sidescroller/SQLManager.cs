@@ -10,6 +10,7 @@ namespace Sidescroller
 {
     public sealed class SQLManager
     {
+
         private static SQLManager instance = null;
         private static readonly object padlock = new object();
 

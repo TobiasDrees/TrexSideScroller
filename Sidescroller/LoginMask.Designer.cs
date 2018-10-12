@@ -43,9 +43,8 @@
             this.tbName.Location = new System.Drawing.Point(3, 63);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(202, 20);
-            this.tbName.TabIndex = 0;
+            this.tbName.TabIndex = 3;
             this.tbName.Visible = false;
-            this.tbName.TextChanged += new System.EventHandler(this.tbName_TextChanged);
             // 
             // tbUsername
             // 
@@ -53,7 +52,6 @@
             this.tbUsername.Name = "tbUsername";
             this.tbUsername.Size = new System.Drawing.Size(202, 20);
             this.tbUsername.TabIndex = 1;
-            this.tbUsername.TextChanged += new System.EventHandler(this.tbUsername_TextChanged);
             // 
             // tbPassword
             // 
@@ -61,14 +59,13 @@
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(202, 20);
             this.tbPassword.TabIndex = 2;
-            this.tbPassword.TextChanged += new System.EventHandler(this.tbPassword_TextChanged);
             // 
             // btnLogin
             // 
             this.btnLogin.Location = new System.Drawing.Point(3, 89);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(77, 25);
-            this.btnLogin.TabIndex = 3;
+            this.btnLogin.TabIndex = 4;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -78,14 +75,9 @@
             this.btnCreateAccount.Location = new System.Drawing.Point(84, 89);
             this.btnCreateAccount.Name = "btnCreateAccount";
             this.btnCreateAccount.Size = new System.Drawing.Size(121, 25);
-            this.btnCreateAccount.TabIndex = 4;
+            this.btnCreateAccount.TabIndex = 5;
             this.btnCreateAccount.Text = "Create Account";
             this.btnCreateAccount.UseVisualStyleBackColor = true;
-            this.btnCreateAccount.Click += new System.EventHandler(this.btnCreateAccount_Click);
-            // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
             // 
             // LoginMask
             // 

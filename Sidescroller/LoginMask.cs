@@ -13,10 +13,11 @@ namespace Sidescroller
 {
     public partial class LoginMask : UserControl
     {
+        public event EventHandler onLogin;
+
         public LoginMask()
         {
             InitializeComponent();
-
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -45,7 +46,11 @@ namespace Sidescroller
                             {
                                 if (PasswordHasher.VerifyHash(tbPassword.Text, user.getPassword()))
                                 {
-                                    this.Visible = false;
+                                    if (this.onLogin != null)
+                                    {
+                                        this.onLogin(this, new LoginEventArgs(user));
+                                        this.Visible = false;
+                                    }
                                 }
                                 else
                                 {
@@ -132,7 +137,6 @@ namespace Sidescroller
                 default:
                     break;
             }
-
         }
 
         private void clearText()
@@ -145,23 +149,7 @@ namespace Sidescroller
         private void highlightTextbox(TextBox tb, string message)
         {
             tb.Focus();
-            errorProvider1.SetError(tb, message);
             MessageBox.Show(message);
-        }
-
-        private void tbUsername_TextChanged(object sender, EventArgs e)
-        {
-            errorProvider1.Clear();
-        }
-
-        private void tbPassword_TextChanged(object sender, EventArgs e)
-        {
-            errorProvider1.Clear();
-        }
-
-        private void tbName_TextChanged(object sender, EventArgs e)
-        {
-            errorProvider1.Clear();
         }
     }
 }
