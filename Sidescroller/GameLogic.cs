@@ -113,13 +113,15 @@ namespace Sidescroller
                     if (asset.Left + asset.Width < -60)
                     {
                         asset.Left = view.ClientSize.Width + rnd.Next(minSpawnDistance, maxSpawnDistance);
+                        asset.Top = view.ClientSize.Height - rnd.Next(100, 400);
                     }
 
                     if (trex.Bounds.IntersectsWith(asset.Bounds))
                     {
                         money += 1;
-                        baseScore += 100;
+                        baseScore += 25;
                         asset.Left = view.ClientSize.Width + rnd.Next(minSpawnDistance, maxSpawnDistance);
+                        asset.Top = view.ClientSize.Height - rnd.Next(100, 400);
                     }
                 }
             }
@@ -156,6 +158,7 @@ namespace Sidescroller
                 highscore = (int)Math.Floor(finalScore);
             }
             view.getTrex().Image = Properties.Resources.dead;
+            // TODO: Press R to Restart Text
             view.setHighscore(highscore);
         }
 
