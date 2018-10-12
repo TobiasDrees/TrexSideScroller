@@ -109,17 +109,19 @@ namespace Sidescroller
                 }
                 else if (asset.Tag == "coin")
                 {
-                    asset.Left -= obstacleSpeed;
-                    if (asset.Left + asset.Width < -60)
+                    x.Left -= obstacleSpeed;
+                    if (x.Left + x.Width < -60)
                     {
-                        asset.Left = view.ClientSize.Width + rnd.Next(minSpawnDistance, maxSpawnDistance);
+                        x.Left = this.ClientSize.Width + rnd.Next(minSpawnDistance, maxSpawnDistance);
+                        x.Top = this.ClientSize.Height - rnd.Next(100, 400);
                     }
 
-                    if (trex.Bounds.IntersectsWith(asset.Bounds))
+                    if (trex.Bounds.IntersectsWith(x.Bounds))
                     {
                         money += 1;
-                        baseScore += 100;
-                        asset.Left = view.ClientSize.Width + rnd.Next(minSpawnDistance, maxSpawnDistance);
+                        baseScore += 25;
+                        x.Left = this.ClientSize.Width + rnd.Next(minSpawnDistance, maxSpawnDistance);
+                        x.Top = this.ClientSize.Height - rnd.Next(100, 400);
                     }
                 }
             }
@@ -156,6 +158,7 @@ namespace Sidescroller
                 highscore = (int)Math.Floor(finalScore);
             }
             view.getTrex().Image = Properties.Resources.dead;
+            // TODO: Press R to Restart Text
             view.setHighscore(highscore);
         }
 
