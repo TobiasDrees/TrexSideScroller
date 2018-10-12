@@ -50,6 +50,8 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GameLogic.cs" />
+    <Compile Include="LoginEventArgs.cs" />
     <Compile Include="LoginMask.cs">
       <SubType>UserControl</SubType>
     </Compile>
