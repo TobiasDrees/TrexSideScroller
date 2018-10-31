@@ -20,13 +20,7 @@ namespace Sidescroller
             InitializeComponent();
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-            if (sender.GetType() == typeof(Button))
-                switchLoginMask(((Button)sender).Text);
-        }
-
-        private void btnCreateAccount_Click(object sender, EventArgs e)
+        private void btnClick(object sender, EventArgs e)
         {
             if (sender.GetType() == typeof(Button))
                 switchLoginMask(((Button)sender).Text);
