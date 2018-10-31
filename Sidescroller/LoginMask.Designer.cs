@@ -1,4 +1,5 @@
-﻿namespace Sidescroller
+using System.Drawing;
+namespace Sidescroller
 {
     partial class LoginMask
     {
@@ -31,10 +32,10 @@
             this.components = new System.ComponentModel.Container();
             this.tbName = new System.Windows.Forms.TextBox();
             this.tbUsername = new System.Windows.Forms.TextBox();
-            this.tbPassword = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnCreateAccount = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.tbPassword = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,15 +54,6 @@
             this.tbUsername.Size = new System.Drawing.Size(202, 20);
             this.tbUsername.TabIndex = 1;
             // 
-            // tbPassword
-            // 
-            this.tbPassword.Location = new System.Drawing.Point(3, 33);
-            this.tbPassword.Name = "tbPassword";
-            this.tbPassword.PasswordChar = '*';
-            this.tbPassword.Font = new Font(tbPassword.Font.FontFamily, 16);
-            this.tbPassword.Size = new System.Drawing.Size(202, 20);
-            this.tbPassword.TabIndex = 2;
-            // 
             // btnLogin
             // 
             this.btnLogin.Location = new System.Drawing.Point(3, 89);
@@ -70,7 +62,7 @@
             this.btnLogin.TabIndex = 4;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            this.btnLogin.Click += new System.EventHandler(this.btnClick);
             // 
             // btnCreateAccount
             // 
@@ -80,6 +72,19 @@
             this.btnCreateAccount.TabIndex = 5;
             this.btnCreateAccount.Text = "Create Account";
             this.btnCreateAccount.UseVisualStyleBackColor = true;
+            this.btnCreateAccount.Click += new System.EventHandler(this.btnClick);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // tbPassword
+            // 
+            this.tbPassword.Location = new System.Drawing.Point(3, 33);
+            this.tbPassword.Name = "tbPassword";
+            this.tbPassword.PasswordChar = '*';
+            this.tbPassword.Size = new System.Drawing.Size(202, 32);
+            this.tbPassword.TabIndex = 2;
             // 
             // LoginMask
             // 
@@ -104,9 +109,9 @@
 
         private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.TextBox tbUsername;
-        private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnCreateAccount;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.TextBox tbPassword;
     }
 }
