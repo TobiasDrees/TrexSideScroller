@@ -38,7 +38,7 @@ namespace Sidescroller
                             User user = SQLManager.Instance.selectUser(tbUsername.Text);
                             if (user != null)
                             {
-                                if (PasswordHasher.VerifyHash(tbPassword.Text, user.getPassword()))
+                                if (PasswordHasher.VerifyHash(tbPassword.Text, user.Password))
                                 {
                                     if (this.onLogin != null)
                                     {
@@ -87,7 +87,7 @@ namespace Sidescroller
                                 User user = SQLManager.Instance.selectUser(tbUsername.Text);
                                 if (user == null)
                                 {
-                                    if (SQLManager.Instance.insertUser(new User(0, tbUsername.Text, tbPassword.Text, tbName.Text)) == 1)
+                                    if (SQLManager.Instance.insertUser(new User(0, tbUsername.Text, tbPassword.Text, tbName.Text, 0)) == 1)
                                     {
                                         clearText();
                                         btnCreateAccount.Text = "Create Account";

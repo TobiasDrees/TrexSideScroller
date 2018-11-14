@@ -42,6 +42,7 @@
             this.floor = new System.Windows.Forms.PictureBox();
             this.obstacle2 = new System.Windows.Forms.PictureBox();
             this.loginMask = new Sidescroller.LoginMask();
+            this.upgradeMenu = new Sidescroller.Upgrades();
             ((System.ComponentModel.ISupportInitialize)(this.coin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.obstacle4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.obstacle3)).BeginInit();
@@ -64,7 +65,6 @@
             // gameTimer
             // 
             this.gameTimer.Interval = 20;
-            
             // 
             // livesText
             // 
@@ -125,7 +125,6 @@
             this.obstacle3.TabIndex = 6;
             this.obstacle3.TabStop = false;
             this.obstacle3.Tag = "obstacle";
-            
             // 
             // obstacle1
             // 
@@ -137,7 +136,6 @@
             this.obstacle1.TabIndex = 3;
             this.obstacle1.TabStop = false;
             this.obstacle1.Tag = "obstacle";
-            
             // 
             // trex
             // 
@@ -149,7 +147,6 @@
             this.trex.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.trex.TabIndex = 2;
             this.trex.TabStop = false;
-            
             // 
             // floor
             // 
@@ -170,7 +167,6 @@
             this.obstacle2.TabIndex = 0;
             this.obstacle2.TabStop = false;
             this.obstacle2.Tag = "obstacle";
-            
             // 
             // loginMask
             // 
@@ -178,9 +174,18 @@
             this.loginMask.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.loginMask.Location = new System.Drawing.Point(195, 155);
             this.loginMask.Name = "loginMask";
-            this.loginMask.Size = new System.Drawing.Size(237, 118);
+            this.loginMask.Size = new System.Drawing.Size(210, 118);
             this.loginMask.TabIndex = 12;
-            this.loginMask.onLogin += new System.EventHandler(onLogin);
+            this.loginMask.onLogin += new System.EventHandler(this.onLogin);
+            // 
+            // upgradeMenu
+            // 
+            this.upgradeMenu.Location = new System.Drawing.Point(147, 9);
+            this.upgradeMenu.Name = "upgradeMenu";
+            this.upgradeMenu.Size = new System.Drawing.Size(324, 127);
+            this.upgradeMenu.TabIndex = 13;
+            this.upgradeMenu.User = null;
+            this.upgradeMenu.Form1 = this;
             // 
             // Form1
             // 
@@ -188,6 +193,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(618, 476);
+            this.Controls.Add(this.upgradeMenu);
             this.Controls.Add(this.loginMask);
             this.Controls.Add(this.coin);
             this.Controls.Add(this.highscoreText);
@@ -233,6 +239,7 @@
         private System.Windows.Forms.Label highscoreText;
         private System.Windows.Forms.PictureBox coin;
         private LoginMask loginMask;
+        private Upgrades upgradeMenu;
     }
 }
 
