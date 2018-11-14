@@ -22,11 +22,11 @@ namespace Sidescroller
         private const int baseGravity = 3;
         private const int minSpawnDistance = 0;
         private const int maxSpawnDistance = 800;
-        private const int baseLives = 3;
         private const int baseInvincibilityTime = 1000;
         private const int baseDamageBuildupTime = 40;
+        private const int baseLives = 1;
 
-        private bool doubleJumpUnlocked = true;
+        private bool doubleJumpUnlocked = false;
         private bool jumping = false;
         private bool doubleJumping = false;
         private bool spaceLetGo = true;
@@ -35,6 +35,7 @@ namespace Sidescroller
         private int baseScore = 0;
         private double finalScore = 0;
         private int obstacleSpeed = baseObstaclespeed;
+        private int bonusLives = 0;
         private int lives = baseLives;
         private int invincibilityTime = 0;
         private int damageBuildupTime = baseDamageBuildupTime;
@@ -45,13 +46,40 @@ namespace Sidescroller
         private Random rnd = new Random();
 
         private GameState state;
-        private User user;
-
         private Form1 view;
+        private User User;
 
         public GameLogic(Form1 view)
         {
             this.view = view;
+            this.User = view.User;
+
+            if (this.User.BoughtUpgrades.Contains(1))
+            {
+                bonusLives++;
+            }
+
+            if (this.User.BoughtUpgrades.Contains(2))
+            {
+                bonusLives++;
+            }
+
+            if (this.User.BoughtUpgrades.Contains(3))
+            {
+                bonusLives++;
+            }
+
+            if (this.User.BoughtUpgrades.Contains(4))
+            {
+                bonusLives++;
+            }
+
+            if (this.User.BoughtUpgrades.Contains(5))
+            {
+                doubleJumpUnlocked = true;
+            }
+
+            lives = baseLives + bonusLives;
         }
 
         public void gameEvent(object sender, EventArgs e)
@@ -157,6 +185,9 @@ namespace Sidescroller
             {
                 highscore = (int)Math.Floor(finalScore);
             }
+
+            User.Money += money;
+
             view.getTrex().Image = Properties.Resources.dead;
             // TODO: Press R to Restart Text
             view.setHighscore(highscore);
@@ -170,7 +201,7 @@ namespace Sidescroller
             jumpSpeed = baseJumpSpeed;
             jumping = false;
             doubleJumping = false;
-            lives = baseLives;
+            lives = baseLives + bonusLives;
             baseScore = 0;
             finalScore = 0;
             obstacleSpeed = baseObstaclespeed;
