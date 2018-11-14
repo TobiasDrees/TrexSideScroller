@@ -42,7 +42,9 @@
             this.floor = new System.Windows.Forms.PictureBox();
             this.obstacle2 = new System.Windows.Forms.PictureBox();
             this.loginMask = new Sidescroller.LoginMask();
-            this.upgradeMenu = new Sidescroller.Upgrades();
+            this.endMenu = new Sidescroller.EndMenu();
+            this.highscorePanel = new Sidescroller.HighscorePanel();
+            this.lblPressSpaceToStart = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.coin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.obstacle4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.obstacle3)).BeginInit();
@@ -174,18 +176,42 @@
             this.loginMask.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.loginMask.Location = new System.Drawing.Point(195, 155);
             this.loginMask.Name = "loginMask";
-            this.loginMask.Size = new System.Drawing.Size(210, 118);
+            this.loginMask.Size = new System.Drawing.Size(237, 118);
             this.loginMask.TabIndex = 12;
             this.loginMask.onLogin += new System.EventHandler(this.onLogin);
             // 
-            // upgradeMenu
+            // endMenu
             // 
-            this.upgradeMenu.Location = new System.Drawing.Point(147, 9);
-            this.upgradeMenu.Name = "upgradeMenu";
-            this.upgradeMenu.Size = new System.Drawing.Size(324, 127);
-            this.upgradeMenu.TabIndex = 13;
-            this.upgradeMenu.User = null;
-            this.upgradeMenu.Form1 = this;
+            this.endMenu.BackColor = System.Drawing.Color.Transparent;
+            this.endMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.endMenu.Location = new System.Drawing.Point(195, 155);
+            this.endMenu.Name = "endMenu";
+            this.endMenu.Size = new System.Drawing.Size(385, 280);
+            this.endMenu.TabIndex = 14;
+            this.endMenu.Visible = false;
+            this.endMenu.onRetry += new System.EventHandler(this.onRetry);
+            this.endMenu.onHighscore += new System.EventHandler(this.onHighscore);
+            // 
+            // highlightMenu
+            // 
+            this.highscorePanel.BackColor = System.Drawing.Color.Transparent;
+            this.highscorePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.highscorePanel.Location = new System.Drawing.Point(195, 155);
+            this.highscorePanel.Name = "highscore";
+            this.highscorePanel.Size = new System.Drawing.Size(385, 280);
+            this.highscorePanel.TabIndex = 14;
+            this.highscorePanel.Visible = false;
+            // 
+            // lblPressSpaceToStart
+            // 
+            this.lblPressSpaceToStart.AutoSize = true;
+            this.lblPressSpaceToStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPressSpaceToStart.Location = new System.Drawing.Point(200, 106);
+            this.lblPressSpaceToStart.Name = "lblPressSpaceToStart";
+            this.lblPressSpaceToStart.Size = new System.Drawing.Size(194, 24);
+            this.lblPressSpaceToStart.TabIndex = 14;
+            this.lblPressSpaceToStart.Text = "Press Space to start";
+            this.lblPressSpaceToStart.Visible = false;
             // 
             // Form1
             // 
@@ -193,9 +219,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(618, 476);
-            this.Controls.Add(this.upgradeMenu);
+            this.Controls.Add(this.lblPressSpaceToStart);
             this.Controls.Add(this.loginMask);
+            this.Controls.Add(this.endMenu);
             this.Controls.Add(this.coin);
+            this.Controls.Add(this.highscorePanel);
             this.Controls.Add(this.highscoreText);
             this.Controls.Add(this.moneyText);
             this.Controls.Add(this.livesText);
@@ -239,7 +267,9 @@
         private System.Windows.Forms.Label highscoreText;
         private System.Windows.Forms.PictureBox coin;
         private LoginMask loginMask;
-        private Upgrades upgradeMenu;
+        private EndMenu endMenu;
+        private HighscorePanel highscorePanel;
+        private System.Windows.Forms.Label lblPressSpaceToStart;
     }
 }
 

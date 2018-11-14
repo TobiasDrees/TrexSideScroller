@@ -8,20 +8,37 @@ namespace Sidescroller
 {
     public class User
     {
-        public int Id { get; private set; }
-        public String Login { get; private set; }
-        public String Password { get; private set; }
-        public String Name { get; private set; }
-        public int Money { get; set; }
-        public List<int> BoughtUpgrades { get; set; }
+        private int id;
+        private String login;
+        private String password;
+        private String name;
 
-        public User(int id, String login, String password, String name, int money)
+        public User(int id, String login, String password, String name)
         {
-            this.Id = id;
-            this.Login = login;
-            this.Password = password;
-            this.Name = name;
-            this.Money = money;
+            this.id = id;
+            this.login = login;
+            this.password = password;
+            this.name = name;
+        }
+
+        public int getId()
+        {
+            return id;
+        }
+
+        public String getLogin()
+        {
+            return login;
+        }
+
+        public String getPassword()
+        {
+            return password;
+        }
+
+        public String getName()
+        {
+            return name;
         }
     }
 }
