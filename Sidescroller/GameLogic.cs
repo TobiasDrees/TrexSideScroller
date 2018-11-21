@@ -19,10 +19,10 @@ namespace Sidescroller
 
         private const int baseJumpSpeed = 30;
         private const int baseObstaclespeed = 10;
-        private const int baseGravity = 1;
+        private const int baseGravity = 3;
         private const int minSpawnDistance = 0;
         private const int maxSpawnDistance = 800;
-        private const int baseLives = 3;
+        private const int baseLives = 1;
         private const int baseInvincibilityTime = 1000;
         private const int baseDamageBuildupTime = 40;
         private const int gameLoopIntervall = 20;
