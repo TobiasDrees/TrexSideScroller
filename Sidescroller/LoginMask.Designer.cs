@@ -1,4 +1,4 @@
-using System.Drawing;
+﻿using System.Drawing;
 namespace Sidescroller
 {
     partial class LoginMask
@@ -83,7 +83,7 @@ namespace Sidescroller
             this.tbPassword.Location = new System.Drawing.Point(3, 33);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.PasswordChar = '*';
-            this.tbPassword.Size = new System.Drawing.Size(202, 20);
+            this.tbPassword.Size = new System.Drawing.Size(202, 32);
             this.tbPassword.TabIndex = 2;
             // 
             // LoginMask
@@ -98,7 +98,7 @@ namespace Sidescroller
             this.Controls.Add(this.tbUsername);
             this.Controls.Add(this.tbName);
             this.Name = "LoginMask";
-            this.Size = new System.Drawing.Size(208, 118);
+            this.Size = new System.Drawing.Size(237, 118);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

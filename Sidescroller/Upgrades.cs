@@ -15,6 +15,8 @@ namespace Sidescroller
         public User User { get; set; }
         public Form1 Form1 { get; set; }
 
+        public event EventHandler onBack;
+
         public Upgrades()
         {
             InitializeComponent();
@@ -142,6 +144,15 @@ namespace Sidescroller
             else
             {
                 MessageBox.Show("You're not logged in!");
+            }
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            if (this.onBack != null)
+            {
+                this.onBack(this, e);
+                this.Visible = false;
             }
         }
     }

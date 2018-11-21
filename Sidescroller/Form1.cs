@@ -23,6 +23,11 @@ namespace Sidescroller
             assignAssets();
         }
 
+        public void setEndMenuVisibility(bool visible)
+        {
+            this.endMenu.Visible = visible;
+        }
+
         private void assignAssets()
         {
             assets.Add(coin);
@@ -31,22 +36,18 @@ namespace Sidescroller
             assets.Add(obstacle1);
             assets.Add(trex);
             assets.Add(obstacle2);
-        }
+        }        
 
         private void keyisdown(object sender, KeyEventArgs e)
         {
             if (logic != null)
-            {
                 logic.keyisdown(sender, e);
-            }
         }
 
         private void keyisup(object sender, KeyEventArgs e)
         {
             if (logic != null)
-            {
                 logic.keyisup(sender, e);
-            }
         }       
 
         protected void onLogin(object sender, EventArgs e)
@@ -60,8 +61,31 @@ namespace Sidescroller
                 this.upgradeMenu.updateButtonVisibility();
                 logic = new GameLogic(this);
                 this.gameTimer.Tick += new System.EventHandler(logic.gameEvent);
-                logic.setState(Sidescroller.GameLogic.GameState.INITIALIZED);
+                logic.State = Sidescroller.GameLogic.GameState.INITIALIZED;
             }
+        }
+
+        protected void onRetry(object sender, EventArgs e)
+        {
+            if (logic.State == GameLogic.GameState.FINISHED)
+                logic.State = GameLogic.GameState.INITIALIZED;
+        }
+
+        protected void onHighscore(object sender, EventArgs e)
+        {
+            this.highscorePanel.loadHighscore();
+            this.highscorePanel.Visible = true;
+        }
+
+        protected void onUpgrades(object sender, EventArgs e)
+        {
+            this.upgradeMenu.Visible = true;
+        }
+
+        protected void showEndMenu(object sender, EventArgs e)
+        {
+            this.endMenu.Visible = true;
+            this.endMenu.Focus();
         }
 
         public PictureBox getTrex()
@@ -107,5 +131,11 @@ namespace Sidescroller
         {
             this.gameTimer.Start();
         }
+
+        public void showStartText(bool b)
+        {
+            this.lblPressSpaceToStart.Visible = b;
+        }
+
     }
 }

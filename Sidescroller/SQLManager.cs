@@ -46,6 +46,7 @@ namespace Sidescroller
         private string INSERT_USER = "INSERT INTO [User] ([Login], [Password], [Username]) VALUES (?, ?, ?);";
         private string SELECT_USER_UPGRADES = "SELECT upgrade_ID FROM [User_upgrades] WHERE user_ID=?;";
         private string INSERT_USER_UPGRADE = "INSERT INTO [User_upgrades] ([user_ID], [upgrade_ID]) VALUES (?, ?);";
+        private string SELECT_HIGHSCORE = "SELECT * FROM [Highscore]";
 
         public User selectUser(string login)
         {
@@ -106,6 +107,37 @@ namespace Sidescroller
             }
         }
 
+        public LinkedList<HighscoreEntry> selectHighscore()
+        {
+            connection.Open();
+            try
+            {
+                cmd = connection.CreateCommand();
+                cmd.CommandText = SELECT_HIGHSCORE;
+                LinkedList<HighscoreEntry> highscoreList = new LinkedList<HighscoreEntry>();
+                int place = 1;
+                using (OleDbDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        // HistoryEntry: place, name, score
+                        if (reader.FieldCount != 3)
+                            throw new Exception(String.Format("Invalid entry for highscore! Fieldcount was {0} expected was 3!", reader.FieldCount));
+
+                        HighscoreEntry entry = new HighscoreEntry();
+                        entry.setFields(place, reader[0].ToString(), Convert.ToInt64(reader[1]));
+                        highscoreList.AddLast(entry);
+                        place++;
+                    }
+                }
+                return highscoreList;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
         public int updateUserProgress(User user)
         {
             if (user != null)
@@ -118,7 +150,6 @@ namespace Sidescroller
                     cmd.Parameters.AddWithValue("?", user.Login);
                     cmd.Parameters.AddWithValue("?", PasswordHasher.Hash(user.Password));
                     cmd.Parameters.AddWithValue("?", user.Name);
-
                     return cmd.ExecuteNonQuery();
                 }
                 finally
@@ -142,18 +173,15 @@ namespace Sidescroller
                     cmd = connection.CreateCommand();
                     cmd.CommandText = SELECT_USER_UPGRADES;
                     cmd.Parameters.AddWithValue("?", user_ID);
-
                     using (OleDbDataReader reader = cmd.ExecuteReader())
                     {
                         List<int> result = new List<int>();
-
                         while (reader.Read())
                         {
                             if (reader.FieldCount != 1)
                                 throw new Exception(String.Format("Invalid entry for user! Fieldcount was {0} expected was 1!", reader.FieldCount));
                             result.Add(Convert.ToInt32(reader[0]));
                         }
-
                         return result;
                     }
                 }
@@ -179,7 +207,6 @@ namespace Sidescroller
                     cmd.CommandText = INSERT_USER_UPGRADE;
                     cmd.Parameters.AddWithValue("?", user.Id);
                     cmd.Parameters.AddWithValue("?", upgradeId);
-
                     return cmd.ExecuteNonQuery();
                 }
                 finally

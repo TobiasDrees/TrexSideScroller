@@ -1,0 +1,1 @@
+H:\C#\c# Projekt\Sidescroller\Sidescroller\bin\Release\Sidescroller.exe.config

@@ -144,6 +144,7 @@
             this.btnBack.TabIndex = 10;
             this.btnBack.Text = "Zurück";
             this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // Upgrades
             // 
