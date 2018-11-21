@@ -61,7 +61,7 @@
             this.entryTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.entryTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.entryTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.entryTable.Size = new System.Drawing.Size(375, 240);
+            this.entryTable.Size = new System.Drawing.Size(375, 308);
             this.entryTable.TabIndex = 1;
             // 
             // btnBack
@@ -71,7 +71,7 @@
             this.btnBack.FlatAppearance.BorderSize = 0;
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBack.Location = new System.Drawing.Point(143, 284);
+            this.btnBack.Location = new System.Drawing.Point(135, 352);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(70, 34);
             this.btnBack.TabIndex = 2;
@@ -87,7 +87,7 @@
             this.Controls.Add(this.entryTable);
             this.Controls.Add(this.lblHighscore);
             this.Name = "HighscorePanel";
-            this.Size = new System.Drawing.Size(385, 322);
+            this.Size = new System.Drawing.Size(385, 395);
             this.ResumeLayout(false);
             this.PerformLayout();
 

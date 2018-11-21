@@ -62,34 +62,32 @@ namespace Sidescroller
                 state = value;
             }
         }
-        private User User;
         private Form1 view;
 
         public GameLogic(Form1 view)
         {
             this.view = view;
-            this.User = view.User;
-            if (this.User.BoughtUpgrades.Contains(1))
+            if (view.User.BoughtUpgrades.Contains(1))
             {
                 bonusLives++;
             }
 
-            if (this.User.BoughtUpgrades.Contains(2))
+            if (view.User.BoughtUpgrades.Contains(2))
             {
                 bonusLives++;
             }
 
-            if (this.User.BoughtUpgrades.Contains(3))
+            if (view.User.BoughtUpgrades.Contains(3))
             {
                 bonusLives++;
             }
 
-            if (this.User.BoughtUpgrades.Contains(4))
+            if (view.User.BoughtUpgrades.Contains(4))
             {
                 bonusLives++;
             }
 
-            if (this.User.BoughtUpgrades.Contains(5))
+            if (view.User.BoughtUpgrades.Contains(5))
             {
                 doubleJumpUnlocked = true;
             }
@@ -143,6 +141,7 @@ namespace Sidescroller
                             if (lives == 0)
                             {
                                 die();
+                                return;
                             }
                             else
                             {
@@ -207,9 +206,11 @@ namespace Sidescroller
             {
                 highscore = (int)Math.Floor(finalScore);
             }
-            User.Money += money;
+            view.User.Money += money;
             view.getTrex().Image = Properties.Resources.dead;
             view.setHighscore(highscore);
+
+            SQLManager.Instance.insertUserScore(view.User, highscore);
 
             State = GameState.FINISHED;
             view.setEndMenuVisibility(true);

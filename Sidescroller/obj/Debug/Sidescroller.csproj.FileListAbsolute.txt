@@ -14,4 +14,3 @@ H:\C#\c# Projekt\Sidescroller\Sidescroller\obj\Debug\Sidescroller.Upgrades.resou
 H:\C#\c# Projekt\Sidescroller\Sidescroller\obj\Debug\Sidescroller.csproj.GenerateResource.Cache
 H:\C#\c# Projekt\Sidescroller\Sidescroller\obj\Debug\Sidescroller.exe
 H:\C#\c# Projekt\Sidescroller\Sidescroller\obj\Debug\Sidescroller.pdb
-H:\C#\c# Projekt\Sidescroller\Sidescroller\obj\Debug\Sidescroller.csprojResolveAssemblyReference.cache

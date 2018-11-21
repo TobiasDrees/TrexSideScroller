@@ -43,10 +43,11 @@ namespace Sidescroller
         private OleDbConnection connection;
         private OleDbCommand cmd;
         private string SELECT_USER = "SELECT * FROM [User] WHERE Login=?;";
-        private string INSERT_USER = "INSERT INTO [User] ([Login], [Password], [Username]) VALUES (?, ?, ?);";
         private string SELECT_USER_UPGRADES = "SELECT upgrade_ID FROM [User_upgrades] WHERE user_ID=?;";
-        private string INSERT_USER_UPGRADE = "INSERT INTO [User_upgrades] ([user_ID], [upgrade_ID]) VALUES (?, ?);";
         private string SELECT_HIGHSCORE = "SELECT * FROM [Highscore]";
+        private string INSERT_USER = "INSERT INTO [User] ([Login], [Password], [Username]) VALUES (?, ?, ?);";
+        private string INSERT_USER_UPGRADE = "INSERT INTO [User_upgrades] ([user_ID], [upgrade_ID]) VALUES (?, ?);";
+        private string INSERT_USER_HIGHSCORE = "INSERT INTO [Score] ([Points], [User_ID], [Score_Date]) VALUES (?, ?, NOW());";
 
         public User selectUser(string login)
         {
@@ -207,6 +208,30 @@ namespace Sidescroller
                     cmd.CommandText = INSERT_USER_UPGRADE;
                     cmd.Parameters.AddWithValue("?", user.Id);
                     cmd.Parameters.AddWithValue("?", upgradeId);
+                    return cmd.ExecuteNonQuery();
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            else
+            {
+                throw new ArgumentNullException("user");
+            }
+        }
+
+        public int insertUserScore(User user, int points)
+        {
+            if (user != null)
+            {
+                connection.Open();
+                try
+                {
+                    cmd = connection.CreateCommand();
+                    cmd.CommandText = INSERT_USER_HIGHSCORE;
+                    cmd.Parameters.AddWithValue("?", points);
+                    cmd.Parameters.AddWithValue("?", user.Id);
                     return cmd.ExecuteNonQuery();
                 }
                 finally

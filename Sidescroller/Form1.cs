@@ -20,6 +20,7 @@ namespace Sidescroller
         public Form1()
         {
             InitializeComponent();
+            upgradeMenu.Form1 = this;
             assignAssets();
         }
 
@@ -84,7 +85,7 @@ namespace Sidescroller
 
         protected void showEndMenu(object sender, EventArgs e)
         {
-            this.endMenu.Visible = true;
+            setEndMenuVisibility(true);
             this.endMenu.Focus();
         }
 
