@@ -41,11 +41,11 @@
             this.trex = new System.Windows.Forms.PictureBox();
             this.floor = new System.Windows.Forms.PictureBox();
             this.obstacle2 = new System.Windows.Forms.PictureBox();
-            this.loginMask = new Sidescroller.LoginMask();
+            this.lblPressSpaceToStart = new System.Windows.Forms.Label();
             this.upgradeMenu = new Sidescroller.Upgrades();
+            this.loginMask = new Sidescroller.LoginMask();
             this.endMenu = new Sidescroller.EndMenu();
             this.highscorePanel = new Sidescroller.HighscorePanel();
-            this.lblPressSpaceToStart = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.coin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.obstacle4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.obstacle3)).BeginInit();
@@ -171,50 +171,6 @@
             this.obstacle2.TabStop = false;
             this.obstacle2.Tag = "obstacle";
             // 
-            // loginMask
-            // 
-            this.loginMask.BackColor = System.Drawing.Color.Transparent;
-            this.loginMask.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.loginMask.Location = new System.Drawing.Point(195, 155);
-            this.loginMask.Name = "loginMask";
-            this.loginMask.Size = new System.Drawing.Size(237, 118);
-            this.loginMask.TabIndex = 12;
-            this.loginMask.onLogin += new System.EventHandler(this.onLogin);
-            // 
-            // upgradeMenu
-            // 
-            this.upgradeMenu.Location = new System.Drawing.Point(147, 9);
-            this.upgradeMenu.Name = "upgradeMenu";
-            this.upgradeMenu.Size = new System.Drawing.Size(324, 127);
-            this.upgradeMenu.TabIndex = 13;
-            this.upgradeMenu.User = null;
-            this.upgradeMenu.Form1 = this;
-            this.upgradeMenu.Visible = false;
-            this.upgradeMenu.onBack += new System.EventHandler(this.showEndMenu);
-            // 
-            // endMenu
-            // 
-            this.endMenu.BackColor = System.Drawing.Color.Transparent;
-            this.endMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.endMenu.Location = new System.Drawing.Point(195, 155);
-            this.endMenu.Name = "endMenu";
-            this.endMenu.Size = new System.Drawing.Size(385, 280);
-            this.endMenu.TabIndex = 14;
-            this.endMenu.Visible = false;
-            this.endMenu.onRetry += new System.EventHandler(this.onRetry);
-            this.endMenu.onHighscore += new System.EventHandler(this.onHighscore);
-            this.endMenu.onUpgrades += new System.EventHandler(this.onUpgrades);
-            // 
-            // highlightMenu
-            // 
-            this.highscorePanel.BackColor = System.Drawing.Color.Transparent;
-            this.highscorePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.highscorePanel.Location = new System.Drawing.Point(195, 155);
-            this.highscorePanel.Name = "highscore";
-            this.highscorePanel.Size = new System.Drawing.Size(385, 280);
-            this.highscorePanel.TabIndex = 14;
-            this.highscorePanel.Visible = false;
-            // 
             // lblPressSpaceToStart
             // 
             this.lblPressSpaceToStart.AutoSize = true;
@@ -225,6 +181,50 @@
             this.lblPressSpaceToStart.TabIndex = 14;
             this.lblPressSpaceToStart.Text = "Press Space to start";
             this.lblPressSpaceToStart.Visible = false;
+            // 
+            // upgradeMenu
+            // 
+            this.upgradeMenu.Form1 = null;
+            this.upgradeMenu.Location = new System.Drawing.Point(145, 133);
+            this.upgradeMenu.Name = "upgradeMenu";
+            this.upgradeMenu.Size = new System.Drawing.Size(324, 127);
+            this.upgradeMenu.TabIndex = 13;
+            this.upgradeMenu.User = null;
+            this.upgradeMenu.Visible = false;
+            this.upgradeMenu.onBack += new System.EventHandler(this.showEndMenu);
+            // 
+            // loginMask
+            // 
+            this.loginMask.BackColor = System.Drawing.Color.Transparent;
+            this.loginMask.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.loginMask.Location = new System.Drawing.Point(195, 155);
+            this.loginMask.Name = "loginMask";
+            this.loginMask.Size = new System.Drawing.Size(237, 118);
+            this.loginMask.TabIndex = 12;
+            this.loginMask.onLogin += new System.EventHandler(this.onLogin);
+            // 
+            // endMenu
+            // 
+            this.endMenu.BackColor = System.Drawing.Color.Transparent;
+            this.endMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.endMenu.Location = new System.Drawing.Point(228, 114);
+            this.endMenu.Name = "endMenu";
+            this.endMenu.Size = new System.Drawing.Size(156, 159);
+            this.endMenu.TabIndex = 14;
+            this.endMenu.Visible = false;
+            this.endMenu.onRetry += new System.EventHandler(this.onRetry);
+            this.endMenu.onHighscore += new System.EventHandler(this.onHighscore);
+            this.endMenu.onUpgrades += new System.EventHandler(this.onUpgrades);
+            // 
+            // highscorePanel
+            // 
+            this.highscorePanel.BackColor = System.Drawing.Color.Transparent;
+            this.highscorePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.highscorePanel.Location = new System.Drawing.Point(125, 33);
+            this.highscorePanel.Name = "highscorePanel";
+            this.highscorePanel.Size = new System.Drawing.Size(385, 391);
+            this.highscorePanel.TabIndex = 14;
+            this.highscorePanel.Visible = false;
             // 
             // Form1
             // 
