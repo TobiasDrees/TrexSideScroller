@@ -1,0 +1,47 @@
+public void keyisdown(object sender, KeyEventArgs e)
+{
+	if (State == GameState.STARTED)
+	{
+		if (e.KeyCode == Keys.Space)
+		{
+			if (!jumping)
+			{
+				jumping = true;
+				jumpSpeed = -baseJumpSpeed;
+				spaceLetGo = false;
+			}
+
+			if (doubleJumpUnlocked && !doubleJumping && spaceLetGo)
+			{
+				jumpSpeed = -baseJumpSpeed;
+				doubleJumping = true;
+			}
+		}
+	}
+}
+
+public void keyisup(object sender, KeyEventArgs e)
+{
+	if (e.KeyCode == Keys.Space && State == GameState.STARTED)
+	{
+		spaceLetGo = true;
+	}
+}
+		
+public void gameEvent(object sender, EventArgs e)
+{
+	trex.Top += jumpSpeed;
+	
+	if (jumping)
+	{
+		jumpSpeed += gravity;
+	}
+
+	if (trex.Top >= 380)
+	{
+		trex.Top = view.getFloor().Top - trex.Height;
+		jumpSpeed = 0;
+		jumping = false;
+		doubleJumping = false;
+	}
+}
