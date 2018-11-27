@@ -79,7 +79,7 @@ namespace Sidescroller
                 Int32 val;
                 try
                 {
-                    val = Convert.ToInt32(this.lifesText.Text.Substring(7));
+                    val = Convert.ToInt32(this.livesText.Text.Substring(7));
                 }
                 catch (Exception)
                 {
