@@ -104,7 +104,7 @@ namespace Sidescroller
 
             if (jumping)
             {
-                currJumpSpeed += GAVITY;
+                currJumpSpeed += GRAVITY;
             }
 
             intersectingObstacle = false;
