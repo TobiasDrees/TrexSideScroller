@@ -89,7 +89,7 @@ namespace Sidescroller
             }
             set
             {
-                this.lifesText.Text = "Lifes: " + value;
+                this.livesText.Text = "Lives: " + value;
             }
         }
 
