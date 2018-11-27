@@ -86,7 +86,7 @@ namespace Sidescroller
                 doubleJumpUnlocked = true;
             }
 
-            view.Lifes = BASE_LIVES + bonusLives;
+            view.Lives = BASE_LIVES + bonusLives;
         }
 
         public void gameEvent(object sender, EventArgs e)
