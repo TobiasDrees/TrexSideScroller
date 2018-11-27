@@ -131,7 +131,7 @@ namespace Sidescroller
                             view.Lifes -= 1;
                             currDamageBuildupTime = DAMAGE_BUILDUP_TIME;
 
-                            if (view.Lifes == 0)
+                            if (view.Lives == 0)
                             {
                                 die();
                                 return;
