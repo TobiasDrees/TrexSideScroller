@@ -17,7 +17,7 @@ namespace Sidescroller
             FINISHED
         }
 
-        private const int baseJumpSpeed = 30;
+        private const int baseJumpSpeed = -30;
         private const int baseObstaclespeed = 10;
         private const int baseGravity = 3;
         private const int minSpawnDistance = 0;
@@ -31,7 +31,7 @@ namespace Sidescroller
         private bool jumping = false;
         private bool doubleJumping = false;
         private bool spaceLetGo = true;
-        private int jumpSpeed = baseJumpSpeed;
+        private int jumpSpeed = 0;
         private int gravity = baseGravity;
         private int baseScore = 0;
         private double finalScore = 0;
@@ -221,7 +221,7 @@ namespace Sidescroller
             PictureBox trex = view.getTrex();
             gravity = baseGravity;
             trex.Top = view.getFloor().Top - trex.Height;
-            jumpSpeed = baseJumpSpeed;
+            jumpSpeed = 0;
             jumping = false;
             doubleJumping = false;
             lives = baseLives + bonusLives;
@@ -254,13 +254,13 @@ namespace Sidescroller
                     if (!jumping)
                     {
                         jumping = true;
-                        jumpSpeed = -baseJumpSpeed;
+                        jumpSpeed = baseJumpSpeed;
                         spaceLetGo = false;
                     }
 
                     if (doubleJumpUnlocked && !doubleJumping && spaceLetGo)
                     {
-                        jumpSpeed = -baseJumpSpeed;
+                        jumpSpeed = baseJumpSpeed;
                         doubleJumping = true;
                     }
                 }
