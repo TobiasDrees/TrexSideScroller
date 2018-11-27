@@ -80,7 +80,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLManager.cs" />
-	<Compile Include="Upgrades.cs">
+    <Compile Include="Upgrades.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Upgrades.Designer.cs">
@@ -112,7 +112,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-	<EmbeddedResource Include="Upgrades.resx">
+    <EmbeddedResource Include="Upgrades.resx">
       <DependentUpon>Upgrades.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />

@@ -12,7 +12,9 @@ namespace Sidescroller
 {
     public partial class HighscorePanel : UserControl
     {
+        public event EventHandler onBack;
         private LinkedList<HighscoreEntry> entries;
+
         public HighscorePanel()
         {
             InitializeComponent();
@@ -28,6 +30,15 @@ namespace Sidescroller
                 {
                     entryTable.Controls.Add(entries.ElementAt(i), 1, i + 1);
                 }
+            }
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            if (this.onBack != null)
+            {
+                this.onBack(this, e);
+                this.Visible = false;
             }
         }
     }

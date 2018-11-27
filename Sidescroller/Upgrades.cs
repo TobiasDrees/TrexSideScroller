@@ -12,8 +12,7 @@ namespace Sidescroller
 {
     public partial class Upgrades : UserControl
     {
-        public User User { get; set; }
-        public Form1 Form1 { get; set; }
+        public Form1 View { get; set; }
 
         public event EventHandler onBack;
 
@@ -24,27 +23,27 @@ namespace Sidescroller
 
         public void updateButtonVisibility()
         {
-            if (User.BoughtUpgrades.Contains(1))
+            if (View.User.BoughtUpgrades.Contains(1))
             {
                 btnUpgrade1.Visible = false;
             }
 
-            if (User.BoughtUpgrades.Contains(2))
+            if (View.User.BoughtUpgrades.Contains(2))
             {
                 btnUpgrade2.Visible = false;
             }
 
-            if (User.BoughtUpgrades.Contains(3))
+            if (View.User.BoughtUpgrades.Contains(3))
             {
                 btnUpgrade3.Visible = false;
             }
 
-            if (User.BoughtUpgrades.Contains(4))
+            if (View.User.BoughtUpgrades.Contains(4))
             {
                 btnUpgrade4.Visible = false;
             }
 
-            if (User.BoughtUpgrades.Contains(5))
+            if (View.User.BoughtUpgrades.Contains(5))
             {
                 btnUpgrade5.Visible = false;
             }
@@ -52,12 +51,12 @@ namespace Sidescroller
 
         private void btnUpgrade1_Click(object sender, EventArgs e)
         {
-            if (User != null) {
-                if (this.User.Money >= 5)
+            if (View.User != null)
+            {
+                if (View.Money >= 5)
                 {
-                    this.User.Money -= 5;
-                    this.Form1.setMoney(this.User.Money);
-                    SQLManager.Instance.insertUserUpgrade(this.User, 1);
+                    this.View.Money -= 5;
+                    SQLManager.Instance.insertUserUpgrade(View.User, 1);
                     this.btnUpgrade1.Visible = false;
                 }
                 else
@@ -71,12 +70,12 @@ namespace Sidescroller
 
         private void btnUpgrade2_Click(object sender, EventArgs e)
         {
-            if (User != null) {
-                if (this.User.Money >= 20)
+            if (View.User != null)
+            {
+                if (View.Money >= 20)
                 {
-                    this.User.Money -= 20;
-                    this.Form1.setMoney(this.User.Money);
-                    SQLManager.Instance.insertUserUpgrade(this.User, 2);
+                    View.Money -= 20;
+                    SQLManager.Instance.insertUserUpgrade(View.User, 2);
                     this.btnUpgrade2.Visible = false;
                 }
                 else
@@ -90,12 +89,12 @@ namespace Sidescroller
 
         private void btnUpgrade3_Click(object sender, EventArgs e)
         {
-            if (User != null) {
-                if (this.User.Money >= 50)
+            if (View.User != null)
+            {
+                if (View.Money >= 50)
                 {
-                    this.User.Money -= 50;
-                    this.Form1.setMoney(this.User.Money);
-                    SQLManager.Instance.insertUserUpgrade(this.User, 3);
+                    View.Money -= 50;
+                    SQLManager.Instance.insertUserUpgrade(View.User, 3);
                     this.btnUpgrade3.Visible = false;
                 }
                 else
@@ -109,12 +108,12 @@ namespace Sidescroller
 
         private void btnUpgrade4_Click(object sender, EventArgs e)
         {
-            if (User != null) {
-                if (this.User.Money >= 100)
+            if (View.User != null)
+            {
+                if (View.Money >= 100)
                 {
-                    this.User.Money -= 100;
-                    this.Form1.setMoney(this.User.Money);
-                    SQLManager.Instance.insertUserUpgrade(this.User, 4);
+                    View.Money -= 100;
+                    SQLManager.Instance.insertUserUpgrade(View.User, 4);
                     this.btnUpgrade4.Visible = false;
                 }
                 else
@@ -128,12 +127,12 @@ namespace Sidescroller
 
         private void btnUpgrade5_Click(object sender, EventArgs e)
         {
-            if (User != null) {
-                if (this.User.Money >= 10)
+            if (View.User != null)
+            {
+                if (View.Money >= 10)
                 {
-                    this.User.Money -= 10;
-                    this.Form1.setMoney(this.User.Money);
-                    SQLManager.Instance.insertUserUpgrade(this.User, 5);
+                    View.Money -= 10;
+                    SQLManager.Instance.insertUserUpgrade(View.User, 5);
                     this.btnUpgrade5.Visible = false;
                 }
                 else

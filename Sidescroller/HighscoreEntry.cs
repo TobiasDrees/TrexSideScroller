@@ -35,9 +35,9 @@ namespace Sidescroller
         public static HighscoreEntry createHeaderEntry()
         {
             HighscoreEntry header = new HighscoreEntry();
-            header.lblPlace.Text = "PLACE";
-            header.lblName.Text = "NAME";
-            header.lblScore.Text = "SCORE";
+            header.lblPlace.Text = "Place";
+            header.lblName.Text = "Name";
+            header.lblScore.Text = "Score";
             return header;
         }
     }

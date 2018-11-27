@@ -14,13 +14,92 @@ namespace Sidescroller
     public partial class Form1 : Form
     {
         public User User { get; private set; }
+        private Int32 score = 0;
+        public Int32 Score
+        {
+            get
+            {
+                return score; 
+            }
+            set
+            {
+                score = value;
+                this.scoreText.Text = "Score: " + score;
+            }
+        }
+
+        public Int32 Highscore
+        {
+            get
+            {
+                Int32 val;
+                try
+                {
+                    val = Convert.ToInt32(this.highscoreText.Text.Substring(12));
+                }
+                catch (Exception) 
+                {
+                    val = 0;
+                }
+                return val;
+            }
+            set
+            {
+                this.highscoreText.Text = "Highscore: " + value;
+            }
+        }
+
+        public Int32 Money
+        {
+            get
+            {
+                Int32 val;
+                try
+                 {
+                     string s = this.moneyText.Text.Substring(8);
+                    val = Convert.ToInt32(s);
+                }
+                catch (Exception)
+                {
+                    val = 0;
+                }
+                return val;
+            }
+            set
+            {
+                this.moneyText.Text = "Money: $" + value;
+                User.Money = value;
+            }
+        }
+
+        public Int32 Lifes
+        {
+            get
+            {
+                Int32 val;
+                try
+                {
+                    val = Convert.ToInt32(this.lifesText.Text.Substring(7));
+                }
+                catch (Exception)
+                {
+                    val = 0;
+                }
+                return val;
+            }
+            set
+            {
+                this.lifesText.Text = "Lifes: " + value;
+            }
+        }
+
         private GameLogic logic;
         private List<PictureBox> assets = new List<PictureBox>();
 
         public Form1()
         {
             InitializeComponent();
-            upgradeMenu.Form1 = this;
+            upgradeMenu.View = this;
             assignAssets();
         }
 
@@ -53,12 +132,12 @@ namespace Sidescroller
 
         protected void onLogin(object sender, EventArgs e)
         {
-            if (e is LoginEventArgs)
+            if (e is LoginEventArgs && logic == null || e is LoginEventArgs && logic != null && logic.State == GameLogic.GameState.NOT_INITIALIZED)
             {
                 LoginEventArgs eventArgs = (LoginEventArgs)e;
                 User = eventArgs.User;
                 User.BoughtUpgrades = SQLManager.Instance.selectUserUpgrades(User.Id);
-                this.upgradeMenu.User = User;
+                Money = User.Money;
                 this.upgradeMenu.updateButtonVisibility();
                 logic = new GameLogic(this);
                 this.gameTimer.Tick += new System.EventHandler(logic.gameEvent);
@@ -97,26 +176,6 @@ namespace Sidescroller
         public PictureBox getFloor()
         {
             return floor;
-        }
-
-        public void setScore(double score)
-        {
-            this.scoreText.Text = "Score: " + Math.Floor(score);
-        }
-
-        public void setLives(int lives)
-        {
-            this.livesText.Text = "Lives: " + lives;
-        }
-
-        public void setMoney(int money)
-        {
-            this.moneyText.Text = "Money: $" + money;
-        }
-
-        public void setHighscore(int highscore)
-        {
-            this.highscoreText.Text = "Highscore: " + highscore;
         }
 
         public List<PictureBox> getAssets()

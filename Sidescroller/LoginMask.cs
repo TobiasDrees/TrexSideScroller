@@ -48,12 +48,12 @@ namespace Sidescroller
                                 }
                                 else
                                 {
-                                    highlightTextbox(tbPassword, "Incorrect password!");
+                                    highlightTextbox(tbPassword, "Incorrect username or password!");
                                 }
                             }
                             else
                             {
-                                highlightTextbox(tbUsername, "Unknown username!");
+                                highlightTextbox(tbUsername, "Incorrect username or password!");
                             }
                         }
                         else
@@ -136,8 +136,11 @@ namespace Sidescroller
         private void clearText()
         {
             tbUsername.Clear();
+            AddPlaceHolder(tbUsername, null);
             tbPassword.Clear();
+            AddPlaceHolder(tbPassword, null);
             tbName.Clear();
+            AddPlaceHolder(tbName, null);
         }
 
         private void highlightTextbox(TextBox tb, string message)
@@ -145,5 +148,51 @@ namespace Sidescroller
             tb.Focus();
             MessageBox.Show(message);
         }
+
+        private void RemovePlaceHolder(object sender, EventArgs e)
+        {
+            if ((((TextBox)sender).Text).StartsWith("Enter "))
+            {
+                if (sender.Equals(tbUsername))
+                {
+                    tbUsername.ForeColor = System.Drawing.SystemColors.WindowText;
+                    tbUsername.Text = "";
+                }
+                else if (sender.Equals(tbPassword))
+                {
+                    tbPassword.ForeColor = System.Drawing.SystemColors.WindowText;
+                    tbPassword.PasswordChar = '*';
+                    tbPassword.Text = "";
+                }
+                else if (sender.Equals(tbName))
+                {
+                    tbName.ForeColor = System.Drawing.SystemColors.WindowText;
+                    tbName.Text = "";
+                }
+            }
+        }
+
+        private void AddPlaceHolder(object sender, EventArgs e)
+        {
+            if (String.IsNullOrWhiteSpace(((TextBox)sender).Text))
+            {
+                if (sender.Equals(tbUsername)) {
+                    tbUsername.ForeColor = System.Drawing.SystemColors.GrayText;
+                    tbUsername.Text = "Enter username ...";
+                }
+                else if (sender.Equals(tbPassword))
+                {
+                    tbPassword.ForeColor = System.Drawing.SystemColors.GrayText;
+                    tbPassword.PasswordChar = '\0';
+                    tbPassword.Text = "Enter password ...";
+                }
+                else if (sender.Equals(tbName))
+                {
+                    tbName.ForeColor = System.Drawing.SystemColors.GrayText;
+                    tbName.Text = "Enter nickname ...";
+                }
+            }
+        }
+
     }
 }
