@@ -212,7 +212,7 @@ namespace Sidescroller
             currJumpSpeed = 0;
             jumping = false;
             doubleJumping = false;
-            view.Lifes = BASE_LIVES + bonusLives;
+            view.Lives = BASE_LIVES + bonusLives;
             view.Score = 0;
             currAssetSpeed = BASE_ASSET_SPEED;
             trex.Image = Properties.Resources.running;
