@@ -19,7 +19,7 @@ namespace Sidescroller
 
         private const int JUMP_SPEED = -18;
         private const int BASE_ASSET_SPEED = 5;
-        private const int GAVITY = 1;
+        private const int GRAVITY = 1;
         private const int MIN_SPAWN_DIST = 0;
         private const int MAX_SPAWN_DIST = 800;
         private const int BASE_LIVES = 1;
