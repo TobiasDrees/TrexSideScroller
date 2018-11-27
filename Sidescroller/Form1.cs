@@ -72,7 +72,7 @@ namespace Sidescroller
             }
         }
 
-        public Int32 Lifes
+        public Int32 Lives
         {
             get
             {
