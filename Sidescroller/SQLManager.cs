@@ -48,6 +48,7 @@ namespace Sidescroller
         private string INSERT_USER = "INSERT INTO [User] ([Login], [Password], [Username]) VALUES (?, ?, ?);";
         private string INSERT_USER_UPGRADE = "INSERT INTO [User_upgrades] ([user_ID], [upgrade_ID]) VALUES (?, ?);";
         private string INSERT_USER_HIGHSCORE = "INSERT INTO [Score] ([Points], [User_ID], [Score_Date]) VALUES (?, ?, NOW());";
+        private string UPDATE_USER_MONEY = "UPDATE [User] SET [Money]=? WHERE [ID]=?";
 
         public User selectUser(string login)
         {
@@ -139,7 +140,7 @@ namespace Sidescroller
             }
         }
 
-        public int updateUserProgress(User user)
+        public int updateUserMoney(User user)
         {
             if (user != null)
             {
@@ -147,10 +148,9 @@ namespace Sidescroller
                 try
                 {
                     cmd = connection.CreateCommand();
-                    cmd.CommandText = INSERT_USER;
-                    cmd.Parameters.AddWithValue("?", user.Login);
-                    cmd.Parameters.AddWithValue("?", PasswordHasher.Hash(user.Password));
-                    cmd.Parameters.AddWithValue("?", user.Name);
+                    cmd.CommandText = UPDATE_USER_MONEY;
+                    cmd.Parameters.AddWithValue("?", user.Money);
+                    cmd.Parameters.AddWithValue("?", user.Id);
                     return cmd.ExecuteNonQuery();
                 }
                 finally
@@ -181,6 +181,7 @@ namespace Sidescroller
                         {
                             if (reader.FieldCount != 1)
                                 throw new Exception(String.Format("Invalid entry for user! Fieldcount was {0} expected was 1!", reader.FieldCount));
+
                             result.Add(Convert.ToInt32(reader[0]));
                         }
                         return result;
@@ -221,7 +222,7 @@ namespace Sidescroller
             }
         }
 
-        public int insertUserScore(User user, int points)
+        public int insertUserScore(User user, Int64 points)
         {
             if (user != null)
             {

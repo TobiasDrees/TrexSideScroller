@@ -14,3 +14,17 @@ H:\C#\c# Projekt\Sidescroller\Sidescroller\obj\Debug\Sidescroller.Upgrades.resou
 H:\C#\c# Projekt\Sidescroller\Sidescroller\obj\Debug\Sidescroller.csproj.GenerateResource.Cache
 H:\C#\c# Projekt\Sidescroller\Sidescroller\obj\Debug\Sidescroller.exe
 H:\C#\c# Projekt\Sidescroller\Sidescroller\obj\Debug\Sidescroller.pdb
+G:\TrexSideScroller-master\Sidescroller\bin\Debug\Sidescroller.exe.config
+G:\TrexSideScroller-master\Sidescroller\bin\Debug\Sidescroller.exe
+G:\TrexSideScroller-master\Sidescroller\bin\Debug\Sidescroller.pdb
+G:\TrexSideScroller-master\Sidescroller\obj\Debug\Sidescroller.EndMenu.resources
+G:\TrexSideScroller-master\Sidescroller\obj\Debug\Sidescroller.Form1.resources
+G:\TrexSideScroller-master\Sidescroller\obj\Debug\Sidescroller.HighscoreEntry.resources
+G:\TrexSideScroller-master\Sidescroller\obj\Debug\Sidescroller.HighscorePanel.resources
+G:\TrexSideScroller-master\Sidescroller\obj\Debug\Sidescroller.LoginMask.resources
+G:\TrexSideScroller-master\Sidescroller\obj\Debug\Sidescroller.Properties.Resources.resources
+G:\TrexSideScroller-master\Sidescroller\obj\Debug\Sidescroller.Upgrades.resources
+G:\TrexSideScroller-master\Sidescroller\obj\Debug\Sidescroller.csproj.GenerateResource.Cache
+G:\TrexSideScroller-master\Sidescroller\obj\Debug\Sidescroller.exe
+G:\TrexSideScroller-master\Sidescroller\obj\Debug\Sidescroller.pdb
+G:\TrexSideScroller-master\Sidescroller\obj\Debug\Sidescroller.csprojResolveAssemblyReference.cache
