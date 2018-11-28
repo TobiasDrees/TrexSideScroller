@@ -66,6 +66,7 @@ namespace Sidescroller
             reloadUpgrades();
         }
 
+        // Lädt gekaufte Upgrades vom Nutzer
         private void reloadUpgrades()
         {
             bonusLives = 0;
@@ -98,13 +99,14 @@ namespace Sidescroller
             view.Lives = BASE_LIVES + bonusLives;
         }
 
+        // Wird bei jedem Tick vom Timer ausgeführt
         public void gameEvent(object sender, EventArgs e)
         {
+            // Verhindert Flackern von bewegten Objekten
             view.Invalidate();
             PictureBox trex = view.getTrex();
 
-            trex.Top += currJumpSpeed;
-
+            // Unverwundbarkeit nachdem man getroffen wurde
             if (currInvincibilityTime > 0)
             {
                 currInvincibilityTime -= GAME_LOOP_INTERVAL;
@@ -116,13 +118,23 @@ namespace Sidescroller
                 }
             }
 
+            // Sprungmechanik
             if (jumping)
             {
+                trex.Top += currJumpSpeed;
                 currJumpSpeed += GRAVITY;
+
+                if (trex.Top >= 380)
+                {
+                    trex.Top = view.getFloor().Top - trex.Height;
+                    currJumpSpeed = 0;
+                    jumping = false;
+                    doubleJumping = false;
+                }
             }
 
+            // Erkennen von Kollision mit Hindernis oder Münze
             intersectingObstacle = false;
-
             foreach (PictureBox asset in view.getAssets())
             {
                 if ((String) asset.Tag == "obstacle")
@@ -176,6 +188,7 @@ namespace Sidescroller
                 }
             }
 
+            // Runterzählen von Unverwundbarkeitszeit um Hitboxen lockerer zu machen
             if (intersectingObstacle)
             {
                 currDamageBuildupTime -= GAME_LOOP_INTERVAL;
@@ -183,14 +196,6 @@ namespace Sidescroller
             else
             {
                 currDamageBuildupTime = DAMAGE_BUILDUP_TIME;
-            }
-
-            if (trex.Top >= 380)
-            {
-                trex.Top = view.getFloor().Top - trex.Height;
-                currJumpSpeed = 0;
-                jumping = false;
-                doubleJumping = false;
             }
 
             Int32 score = view.Score;
@@ -271,7 +276,8 @@ namespace Sidescroller
         {
             if (State == GameState.STARTED)
             {
-                if (e.KeyCode == Keys.Space) {
+                if (e.KeyCode == Keys.Space)
+                {
                     spaceLetGo = true;
                 }
             }
