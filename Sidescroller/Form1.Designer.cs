@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.scoreText = new System.Windows.Forms.Label();
             this.gameTimer = new System.Windows.Forms.Timer(this.components);
-            this.lifesText = new System.Windows.Forms.Label();
+            this.livesText = new System.Windows.Forms.Label();
             this.moneyText = new System.Windows.Forms.Label();
             this.highscoreText = new System.Windows.Forms.Label();
             this.coin = new System.Windows.Forms.PictureBox();
@@ -74,15 +74,15 @@
             // 
             // livesText
             // 
-            this.lifesText.AutoSize = true;
-            this.lifesText.BackColor = System.Drawing.Color.Transparent;
-            this.lifesText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lifesText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lifesText.Location = new System.Drawing.Point(525, 9);
-            this.lifesText.Name = "livesText";
-            this.lifesText.Size = new System.Drawing.Size(76, 20);
-            this.lifesText.TabIndex = 8;
-            this.lifesText.Text = "Lives: 0";
+            this.livesText.AutoSize = true;
+            this.livesText.BackColor = System.Drawing.Color.Transparent;
+            this.livesText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.livesText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.livesText.Location = new System.Drawing.Point(525, 9);
+            this.livesText.Name = "livesText";
+            this.livesText.Size = new System.Drawing.Size(76, 20);
+            this.livesText.TabIndex = 8;
+            this.livesText.Text = "Lives: 0";
             // 
             // moneyText
             // 
@@ -194,11 +194,11 @@
             // upgradeMenu
             // 
             this.upgradeMenu.BackColor = System.Drawing.Color.Transparent;
-            this.upgradeMenu.View = null;
             this.upgradeMenu.Location = new System.Drawing.Point(145, 133);
             this.upgradeMenu.Name = "upgradeMenu";
             this.upgradeMenu.Size = new System.Drawing.Size(324, 127);
             this.upgradeMenu.TabIndex = 13;
+            this.upgradeMenu.View = null;
             this.upgradeMenu.Visible = false;
             this.upgradeMenu.onBack += new System.EventHandler(this.showEndMenu);
             // 
@@ -250,7 +250,7 @@
             this.Controls.Add(this.highscorePanel);
             this.Controls.Add(this.highscoreText);
             this.Controls.Add(this.moneyText);
-            this.Controls.Add(this.lifesText);
+            this.Controls.Add(this.livesText);
             this.Controls.Add(this.obstacle4);
             this.Controls.Add(this.obstacle3);
             this.Controls.Add(this.scoreText);
@@ -286,7 +286,7 @@
         private System.Windows.Forms.Timer gameTimer;
         private System.Windows.Forms.PictureBox obstacle3;
         private System.Windows.Forms.PictureBox obstacle4;
-        private System.Windows.Forms.Label lifesText;
+        private System.Windows.Forms.Label livesText;
         private System.Windows.Forms.Label moneyText;
         private System.Windows.Forms.Label highscoreText;
         private System.Windows.Forms.PictureBox coin;

@@ -1,1 +1,14 @@
 H:\C#\c# Projekt\Sidescroller\Sidescroller\bin\Release\Sidescroller.exe.config
+H:\Jahr 3\Sidescroller\Sidescroller\bin\Release\Sidescroller.exe.config
+H:\Jahr 3\Sidescroller\Sidescroller\bin\Release\Sidescroller.exe
+H:\Jahr 3\Sidescroller\Sidescroller\bin\Release\Sidescroller.pdb
+H:\Jahr 3\Sidescroller\Sidescroller\obj\Release\Sidescroller.EndMenu.resources
+H:\Jahr 3\Sidescroller\Sidescroller\obj\Release\Sidescroller.Form1.resources
+H:\Jahr 3\Sidescroller\Sidescroller\obj\Release\Sidescroller.HighscoreEntry.resources
+H:\Jahr 3\Sidescroller\Sidescroller\obj\Release\Sidescroller.HighscorePanel.resources
+H:\Jahr 3\Sidescroller\Sidescroller\obj\Release\Sidescroller.LoginMask.resources
+H:\Jahr 3\Sidescroller\Sidescroller\obj\Release\Sidescroller.Properties.Resources.resources
+H:\Jahr 3\Sidescroller\Sidescroller\obj\Release\Sidescroller.Upgrades.resources
+H:\Jahr 3\Sidescroller\Sidescroller\obj\Release\Sidescroller.csproj.GenerateResource.Cache
+H:\Jahr 3\Sidescroller\Sidescroller\obj\Release\Sidescroller.exe
+H:\Jahr 3\Sidescroller\Sidescroller\obj\Release\Sidescroller.pdb
