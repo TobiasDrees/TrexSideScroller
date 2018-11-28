@@ -24,6 +24,7 @@ namespace Sidescroller
         private const int MAX_SPAWN_DIST = 800;
         private const int BASE_LIVES = 1;
         private const int INVINCIBILITY_TIME = 1000;
+        private const int INVINCIBILITY_FLASH_TIME = 50;
         private const int DAMAGE_BUILDUP_TIME = 40;
         private const int GAME_LOOP_INTERVAL = 10;
 
@@ -35,6 +36,7 @@ namespace Sidescroller
         private Int32 currAssetSpeed = BASE_ASSET_SPEED;
         private int bonusLives = 0;
         private int currInvincibilityTime = 0;
+        private int currInvincibilityFlashTime = INVINCIBILITY_FLASH_TIME;
         private int currDamageBuildupTime = DAMAGE_BUILDUP_TIME;
         private bool intersectingObstacle = false;
         private Random random = new Random();
@@ -61,6 +63,13 @@ namespace Sidescroller
         {
             state = GameState.NOT_INITIALIZED;
             this.view = view;
+            reloadUpgrades();
+        }
+
+        private void reloadUpgrades()
+        {
+            bonusLives = 0;
+
             if (view.User.BoughtUpgrades.Contains(1))
             {
                 bonusLives++;
@@ -99,7 +108,12 @@ namespace Sidescroller
             if (currInvincibilityTime > 0)
             {
                 currInvincibilityTime -= GAME_LOOP_INTERVAL;
-                trex.Visible = !trex.Visible;
+                currInvincibilityFlashTime -= GAME_LOOP_INTERVAL;
+
+                if (currInvincibilityFlashTime <= 0) {
+                    currInvincibilityFlashTime = INVINCIBILITY_FLASH_TIME;
+                    trex.Visible = !trex.Visible;
+                }
             }
 
             if (jumping)
@@ -128,7 +142,7 @@ namespace Sidescroller
                         // Workaround for hitboxes
                         if (currDamageBuildupTime <= 0)
                         {
-                            view.Lifes -= 1;
+                            view.Lives -= 1;
                             currDamageBuildupTime = DAMAGE_BUILDUP_TIME;
 
                             if (view.Lives == 0)
@@ -155,7 +169,7 @@ namespace Sidescroller
                     if (trex.Bounds.IntersectsWith(asset.Bounds))
                     {
                         view.Money += 1;
-                        view.Score += 25;
+                        view.Score += 50;
                         asset.Left = view.ClientSize.Width + random.Next(MIN_SPAWN_DIST, MAX_SPAWN_DIST);
                         asset.Top = view.ClientSize.Height - random.Next(100, 400);
                     }
@@ -164,7 +178,7 @@ namespace Sidescroller
 
             if (intersectingObstacle)
             {
-                currDamageBuildupTime -= 20;
+                currDamageBuildupTime -= GAME_LOOP_INTERVAL;
             }
             else
             {
@@ -216,6 +230,7 @@ namespace Sidescroller
             view.Score = 0;
             currAssetSpeed = BASE_ASSET_SPEED;
             trex.Image = Properties.Resources.running;
+            reloadUpgrades();
 
             foreach (PictureBox asset in view.getAssets())
             {
@@ -254,14 +269,18 @@ namespace Sidescroller
 
         public void keyisup(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Space && State == GameState.STARTED)
+            if (State == GameState.STARTED)
             {
-                spaceLetGo = true;
+                if (e.KeyCode == Keys.Space) {
+                    spaceLetGo = true;
+                }
             }
-
-            if (e.KeyCode == Keys.Space && State == GameState.INITIALIZED)
+            else if (State == GameState.INITIALIZED)
             {
-                resetGame();
+                if (e.KeyCode == Keys.Space)
+                {
+                    resetGame();
+                }
             }
         }
     }

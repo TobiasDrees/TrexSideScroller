@@ -57,6 +57,7 @@ namespace Sidescroller
                 {
                     this.View.Money -= 5;
                     SQLManager.Instance.insertUserUpgrade(View.User, 1);
+                    View.User.BoughtUpgrades.Add(1);
                     this.btnUpgrade1.Visible = false;
                 }
                 else
@@ -76,6 +77,7 @@ namespace Sidescroller
                 {
                     View.Money -= 20;
                     SQLManager.Instance.insertUserUpgrade(View.User, 2);
+                    View.User.BoughtUpgrades.Add(2);
                     this.btnUpgrade2.Visible = false;
                 }
                 else
@@ -95,6 +97,7 @@ namespace Sidescroller
                 {
                     View.Money -= 50;
                     SQLManager.Instance.insertUserUpgrade(View.User, 3);
+                    View.User.BoughtUpgrades.Add(3);
                     this.btnUpgrade3.Visible = false;
                 }
                 else
@@ -114,6 +117,7 @@ namespace Sidescroller
                 {
                     View.Money -= 100;
                     SQLManager.Instance.insertUserUpgrade(View.User, 4);
+                    View.User.BoughtUpgrades.Add(4);
                     this.btnUpgrade4.Visible = false;
                 }
                 else
@@ -133,6 +137,7 @@ namespace Sidescroller
                 {
                     View.Money -= 10;
                     SQLManager.Instance.insertUserUpgrade(View.User, 5);
+                    View.User.BoughtUpgrades.Add(5);
                     this.btnUpgrade5.Visible = false;
                 }
                 else

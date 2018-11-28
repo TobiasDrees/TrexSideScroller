@@ -44,6 +44,8 @@ namespace Sidescroller
                                     {
                                         this.onLogin(this, new LoginEventArgs(user));
                                         this.Visible = false;
+                                        this.btnLogin.Enabled = false;
+                                        this.btnCreateAccount.Enabled = false;
                                     }
                                 }
                                 else
